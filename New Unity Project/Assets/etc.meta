@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 130f416486e4905468e592ca697b8019
 folderAsset: yes
 timeCreated: 1519000972
+=======
+guid: 152992b85de5b2341a3ae038643dab8a
+folderAsset: yes
+timeCreated: 1518998891
+>>>>>>> origin/Shooting
 DefaultImporter:
   externalObjects: {}
   userData: 

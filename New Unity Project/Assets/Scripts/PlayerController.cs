@@ -9,11 +9,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float mouseSensitivity = 3.0f;
 
-    PlayerMotor motor;
+    [SerializeField]
+    private GameObject Gun;
+
+    private PlayerShootScript PS_Script;
+
+    private int AmmoType = 0;
+
+        PlayerMotor motor;
 
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
+        PS_Script = Gun.GetComponent<PlayerShootScript>();
     }
 
     private void Update()
@@ -37,5 +45,23 @@ public class PlayerController : MonoBehaviour
         float m_xRot = Input.GetAxisRaw("Mouse Y");
         Vector3 camRot = new Vector3(m_xRot, 0.0f, 0.0f) * mouseSensitivity;
         motor.SetCameraRotation(camRot);
+
+        if (Input.GetButton("Fire1") && Time.time > PS_Script.GetNextFire())
+        {
+            PS_Script.PlayerShoot();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            AmmoType++;
+            if (AmmoType > 1)
+            {
+                AmmoType = 0;
+            }
+
+            print(AmmoType);
+
+            PS_Script.SetBulletType(AmmoType);
+        }
     }
 }

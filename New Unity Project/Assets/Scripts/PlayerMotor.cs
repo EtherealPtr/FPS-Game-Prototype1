@@ -28,19 +28,19 @@ public class PlayerMotor : MonoBehaviour
     }
 
     // Function that gets the player's velocity from the PlayerController script
-    public void MovePlayer(Vector3 _vel)
+    public void SetVelocity(Vector3 _vel)
     {
         velocity = _vel;
     }
 
     // Function that rotates the "player object" horizontally 
-    public void RotatePlayer(Vector3 _rot)
+    public void SetRotation(Vector3 _rot)
     {
         rotation = _rot;
     }
 
     // Function that rotates the "camera" vertically 
-    public void RotateCamera(Vector3 _rot)
+    public void SetCameraRotation(Vector3 _rot)
     {
         camRot = _rot;
     }
@@ -48,7 +48,7 @@ public class PlayerMotor : MonoBehaviour
     // Function that performs movement every frame
     void PerformMovement()
     {
-        if (velocity != null)
+        if (velocity != Vector3.zero)
         {
             rb.MovePosition(transform.position + velocity * Time.deltaTime);
         }
